@@ -1,0 +1,30 @@
+#######################################################
+set target_library    "/home1/14_nmts/14_nmts/stdcell_rvt/db_ccs/saed14rvt_ss0p6v125c.db \
+	                /home1/14_nmts/14_nmts/stdcell_lvt/db_ccs/saed14lvt_ss0p6v125c.db  \
+                         /home1/14_nmts/14_nmts/stdcell_lvt/db_ccs/saed14lvt_ff0p7vm40c.db \
+                          /home1/14_nmts/14_nmts/stdcell_rvt/db_ccs/saed14rvt_ff0p7vm40c.db"
+
+set link_library    "/home1/14_nmts/14_nmts/stdcell_rvt/db_ccs/saed14rvt_ss0p6v125c.db \
+	                /home1/14_nmts/14_nmts/stdcell_lvt/db_ccs/saed14lvt_ss0p6v125c.db  \
+                         /home1/14_nmts/14_nmts/stdcell_lvt/db_ccs/saed14lvt_ff0p7vm40c.db \
+                          /home1/14_nmts/14_nmts/stdcell_rvt/db_ccs/saed14rvt_ff0p7vm40c.db"
+
+#######################################################
+set reference_library    "/home1/14_nmts/14_nmts/stdcell_rvt/db_ccs/saed14rvt_ss0p6v125c.db \
+	                /home1/14_nmts/14_nmts/stdcell_lvt/db_ccs/saed14lvt_ss0p6v125c.db  \
+                         /home1/14_nmts/14_nmts/stdcell_lvt/db_ccs/saed14lvt_ff0p7vm40c.db \
+                          /home1/14_nmts/14_nmts/stdcell_rvt/db_ccs/saed14rvt_ff0p7vm40c.db"
+set link_path    "/home1/14_nmts/14_nmts/stdcell_rvt/db_ccs/saed14rvt_ss0p6v125c.db \
+	                /home1/14_nmts/14_nmts/stdcell_lvt/db_ccs/saed14lvt_ss0p6v125c.db  \
+                         /home1/14_nmts/14_nmts/stdcell_lvt/db_ccs/saed14lvt_ff0p7vm40c.db \
+                          /home1/14_nmts/14_nmts/stdcell_rvt/db_ccs/saed14rvt_ff0p7vm40c.db"
+
+read_verilog /home1/PD06/SmuraliM/RM_FPU/RM/FPU/synth/fpu_add/outputs/fpu_add.mapped.v 
+current_design fpu_add
+link_design
+read_parasitics /home1/PD06/SmuraliM/RM_FPU/RM/FPU/synth/fpu_add/outputs/turbo.ss0p6v125c_WC.RC_MAX.fpu_add.mapped.spef
+ read_sdc ../outputs/fpu_add1.sdc
+group_path -from [all_registers] -to [all_registers] -name reg2reg
+group_path -from [all_registers] -to [all_outputs] -name reg2out
+group_path -from [all_inputs] -to [all_registers] -name in2reg
+group_path -from [all_inputs] -to [all_outputs] -name in2out
